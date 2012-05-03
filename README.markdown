@@ -1,0 +1,14 @@
+# Image Rotator
+
+Image rotator
+
+demo page: [http://www.kometschuh.de/cosmo_slider/cosmo2/index.htm] (http://www.kometschuh.de/cosmo_slider/cosmo2/index.htm)
+
+
+
+
+## License
+
+This plugin is licensed under the MIT License
+
+Copyright for cosmo-slider-full (c) 2012 [Daniel Floeter](http://kometschuh.de)
