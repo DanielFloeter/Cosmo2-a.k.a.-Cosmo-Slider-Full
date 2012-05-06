@@ -3,152 +3,55 @@
 <head>
     <title>COSMO-SLIDER - demo-page</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-</head>
-<style type="text/css">
-    html, body
-    {
-        background-image: url(bg.png);
-    }
-    
-    #cosmo_slider
-    {
-        left: 400px;
-        top: 200px;
-        position: relative;
-    }
-    .image
-    {
-        position: relative;
-        width: 500px;
-        height: 180px;
-    }
-    div.image img
-    {
-        position: absolute;
-    }
-    .image img.bg
-    {
-        border: 2px solid #e7f3da;
-    }
-</style>
-<script type="text/javascript">
-    $(function () {
-
-        var aktiv = window.setInterval(function () { rotate(0.05); }, 1);
-        $('.image').mousemove(function (e) {
-            
-            var nRelMousePos = e.pageX - 400 - 250;
-            // console.log(nRelMousePos / 1000);
-            //rotate(nRelMousePos / 1000)
-            window.clearInterval(aktiv)
-            aktiv = window.setInterval(function () { rotate(nRelMousePos/1000); }, 1);
-        });
-
-
-        var alpha1 = 0;
-        var alpha2 = 0.5;
-        var alpha3 = 1;
-        var alpha4 = 1.5;
-        var alpha5 = 2;
-        var alpha6 = 2.5;
-        var alpha7 = 3;
-        var alpha8 = 3.5;
-        var alpha9 = 4;
-        var alpha10 = 4.5;
-        var alpha11 = 5;
-        var alpha12 = 5.7;
-        // $('html').mousewheel(function (event, delta, deltaX, deltaY) {
-        function rotate(delta) {
-            alpha1 = alpha1 += (delta / 20);
-            //console.log(Math.cos(alpha1) < 0 ? 0 : Math.cos(alpha1));
-            $('#image1').css('left', Math.cos(alpha1) * 300 + 'px');
-            $('#image1').css('top', Math.sin(alpha1) > 0 ? Math.abs(Math.sin(alpha1) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha1) * 60) + 'px');
-            $('#image1').css('z-index', Math.floor((Math.sin(alpha1) * 100) + 100));
-            $('#image1 img.bg, #image1 img.all').css('opacity', Math.sin(alpha1) < 0.1 ? 0 : Math.sin(alpha1));
-            $('#image1 img.bg').css('border-style', Math.sin(alpha1) < 0.5 ? 'none' : 'solid');
-
-            alpha2 = alpha2 += (delta / 20);
-            $('#image2').css('left', Math.cos(alpha2) * 300 + 'px');
-            $('#image2').css('top', Math.sin(alpha2) > 0 ? Math.abs(Math.sin(alpha2) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha2) * 60) + 'px');
-            $('#image2').css('z-index', Math.floor((Math.sin(alpha2) * 100) + 100));
-            $('#image2 img.bg, #image2 img.all').css('opacity', Math.sin(alpha2) < 0.1 ? 0 : Math.sin(alpha2));
-            $('#image2 img.bg').css('border-style', Math.sin(alpha2) < 0.5 ? 'none' : 'solid');
-
-            alpha3 = alpha3 += (delta / 20);
-            $('#image3').css('left', Math.cos(alpha3) * 300 + 'px');
-            $('#image3').css('top', Math.sin(alpha3) > 0 ? Math.abs(Math.sin(alpha3) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha3) * 60) + 'px');
-            $('#image3').css('z-index', Math.floor((Math.sin(alpha3) * 100) + 100));
-            $('#image3 img.bg, #image3 img.all').css('opacity', Math.sin(alpha3) < 0.1 ? 0 : Math.sin(alpha3));
-            $('#image3 img.bg').css('border-style', Math.sin(alpha3) < 0.5 ? 'none' : 'solid');
-
-            alpha4 = alpha4 += (delta / 20);
-            $('#image4').css('left', Math.cos(alpha4) * 300 + 'px');
-            $('#image4').css('top', Math.sin(alpha4) > 0 ? Math.abs(Math.sin(alpha4) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha4) * 60) + 'px');
-            $('#image4').css('z-index', Math.floor((Math.sin(alpha4) * 100) + 100));
-            $('#image4 img.bg, #image4 img.all').css('opacity', Math.sin(alpha4) < 0.1 ? 0 : Math.sin(alpha4));
-            $('#image4 img.bg').css('border-style', Math.sin(alpha4) < 0.5 ? 'none' : 'solid');
-
-            alpha5 = alpha5 += (delta / 20);
-            $('#image5').css('left', Math.cos(alpha5) * 300 + 'px');
-            $('#image5').css('top', Math.sin(alpha5) > 0 ? Math.abs(Math.sin(alpha5) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha5) * 60) + 'px');
-            $('#image5').css('z-index', Math.floor((Math.sin(alpha5) * 100) + 100));
-            $('#image5 img.bg, #image5 img.all').css('opacity', Math.sin(alpha5) < 0.1 ? 0 : Math.sin(alpha5));
-            $('#image5 img.bg').css('border-style', Math.sin(alpha5) < 0.5 ? 'none' : 'solid');
-
-            alpha6 = alpha6 += (delta / 20);
-            $('#image6').css('left', Math.cos(alpha6) * 300 + 'px');
-            $('#image6').css('top', Math.sin(alpha6) > 0 ? Math.abs(Math.sin(alpha6) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha6) * 60) + 'px');
-            $('#image6').css('z-index', Math.floor((Math.sin(alpha6) * 100) + 100));
-            $('#image6 img.bg, #image6 img.all').css('opacity', Math.sin(alpha6) < 0.1 ? 0 : Math.sin(alpha6));
-            $('#image6 img.bg').css('border-style', Math.sin(alpha6) < 0.5 ? 'none' : 'solid');
-
-            alpha7 = alpha7 += (delta / 20);
-            $('#image7').css('left', Math.cos(alpha7) * 300 + 'px');
-            $('#image7').css('top', Math.sin(alpha7) > 0 ? Math.abs(Math.sin(alpha7) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha7) * 60) + 'px');
-            $('#image7').css('z-index', Math.floor((Math.sin(alpha7) * 100) + 100));
-            $('#image7 img.bg, #image7 img.all').css('opacity', Math.sin(alpha7) < 0.1 ? 0 : Math.sin(alpha7));
-            $('#image7 img.bg').css('border-style', Math.sin(alpha7) < 0.5 ? 'none' : 'solid');
-
-            alpha8 = alpha8 += (delta / 20);
-            $('#image8').css('left', Math.cos(alpha8) * 300 + 'px');
-            $('#image8').css('top', Math.sin(alpha8) > 0 ? Math.abs(Math.sin(alpha8) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha8) * 60) + 'px');
-            $('#image8').css('z-index', Math.floor((Math.sin(alpha8) * 100) + 100));
-            $('#image8 img.bg, #image8 img.all').css('opacity', Math.sin(alpha8) < 0.1 ? 0 : Math.sin(alpha8));
-            $('#image8 img.bg').css('border-style', Math.sin(alpha8) < 0.5 ? 'none' : 'solid');
-
-            alpha9 = alpha9 += (delta / 20);
-            $('#image9').css('left', Math.cos(alpha9) * 300 + 'px');
-            $('#image9').css('top', Math.sin(alpha9) > 0 ? Math.abs(Math.sin(alpha9) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha9) * 60) + 'px');
-            $('#image9').css('z-index', Math.floor((Math.sin(alpha9) * 100) + 100));
-            $('#image9 img.bg, #image9 img.all').css('opacity', Math.sin(alpha9) < 0.1 ? 0 : Math.sin(alpha9));
-            $('#image9 img.bg').css('border-style', Math.sin(alpha9) < 0.5 ? 'none' : 'solid');
-
-            alpha10 = alpha10 += (delta / 20);
-            $('#image10').css('left', Math.cos(alpha10) * 300 + 'px');
-            $('#image10').css('top', Math.sin(alpha10) > 0 ? Math.abs(Math.sin(alpha10) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha10) * 60) + 'px');
-            $('#image10').css('z-index', Math.floor((Math.sin(alpha10) * 100) + 100));
-            $('#image10 img.bg, #image10 img.all').css('opacity', Math.sin(alpha10) < 0.1 ? 0 : Math.sin(alpha10));
-            $('#image10 img.bg').css('border-style', Math.sin(alpha10) < 0.5 ? 'none' : 'solid');
-
-            alpha11 = alpha11 += (delta / 20);
-            $('#image11').css('left', Math.cos(alpha11) * 300 + 'px');
-            $('#image11').css('top', Math.sin(alpha11) > 0 ? Math.abs(Math.sin(alpha11) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha11) * 60) + 'px');
-            $('#image11').css('z-index', Math.floor((Math.sin(alpha11) * 100) + 100));
-            $('#image11 img.bg, #image11 img.all').css('opacity', Math.sin(alpha11) < 0.1 ? 0 : Math.sin(alpha11));
-            $('#image11 img.bg').css('border-style', Math.sin(alpha11) < 0.5 ? 'none' : 'solid');
-
-            alpha12 = alpha12 += (delta / 20);
-            $('#image12').css('left', Math.cos(alpha12) * 300 + 'px');
-            $('#image12').css('top', Math.sin(alpha12) > 0 ? Math.abs(Math.sin(alpha12) * 60) + 'px' : '-' + Math.abs(Math.sin(alpha12) * 60) + 'px');
-            $('#image12').css('z-index', Math.floor((Math.sin(alpha12) * 100) + 100));
-            $('#image12 img.bg, #image12 img.all').css('opacity', Math.sin(alpha12) < 0.1 ? 0 : Math.sin(alpha12));
-            $('#image12 img.bg').css('border-style', Math.sin(alpha12) < 0.5 ? 'none' : 'solid');
-        };
-    });
-
-</script>
+    <style type="text/css">
+        html, body { background-image: url(bg.png); }
+        #cosmo_slider { left: 400px; top: 200px; position: relative; }
+        .image { position: relative; width: 500px; height: 180px; }
+        div.image img { position: absolute; }
+        .image img.bg { border: 2px solid #e7f3da; }
+    </style>
 </head>
 <body>
+    <script type="text/javascript">
+        $(function () {
+
+            //------------------------------------------------------ - - - - - - - - - -------//
+            // all global used variables
+            var global = {
+                aktiv: null,
+                nAlpha: 0,
+                nAlphaWithOffset: 0
+            };
+
+            //------------------------------------------------------ - - - - - - - - - -------//
+            // rotate translation
+            global.aktiv = window.setInterval(function () { rotate(0.05); }, 1);
+            
+            //------------------------------------------------------ - - - - - - - - - -------//
+            // break and set new with mouse interaction
+            $('.image').mousemove(function (e) {
+                var nRelMousePos = e.pageX - 400 - 250;
+                window.clearInterval(global.aktiv)
+                global.aktiv = window.setInterval(function () { rotate(nRelMousePos / 1000); }, 1);
+            });
+
+            //------------------------------------------------------ - - - - - - - - - -------//
+            // set for each image css properties, like: left, top, z-index, opacity, ...
+            //------------------------------------------------------ - - - - - - - - - -------//
+            function rotate(delta) {
+                global.nAlpha += (delta / 20);
+                for (var i = 1; i <= 12; i++) {
+                    global.nAlphaWithOffset = global.nAlpha + (0.5 * i);
+                    $('#image' + i).css('left', Math.cos(global.nAlphaWithOffset) * 300 + 'px');
+                    $('#image' + i).css('top', Math.sin(global.nAlphaWithOffset) > 0 ? Math.abs(Math.sin(global.nAlphaWithOffset) * 60) + 'px' : '-' + Math.abs(Math.sin(global.nAlphaWithOffset) * 60) + 'px');
+                    $('#image' + i).css('z-index', Math.floor((Math.sin(global.nAlphaWithOffset) * 100) + 100));
+                    $('#image' + i + ' img.bg, #image' + i + ' img.all').css('opacity', Math.sin(global.nAlphaWithOffset) < 0.1 ? 0 : Math.sin(global.nAlphaWithOffset));
+                    $('#image' + i + ' img.bg').css('border-style', Math.sin(global.nAlphaWithOffset) < 0.5 ? 'none' : 'solid');
+                }
+            };
+        });
+
+    </script>
     <div id="cosmo_slider">
         <div style="position: absolute;">
             <div id="image1" class="image" style="left: 300px; top: 0px; z-index: 100;">
