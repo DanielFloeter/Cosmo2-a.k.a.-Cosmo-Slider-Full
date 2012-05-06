@@ -9,7 +9,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <style type="text/css">
         html, body { background-image: url(bg.png); }
-        #cosmo_slider, #cosmo2 { left: 400px; top: 200px; position: relative; }
+        #cosmo2 { left: 400px; top: 200px; position: relative; }
         .image { position: relative; width: 500px; height: 180px; }
         div.image img { position: absolute; }
         .image img.bg { border: 2px solid #e7f3da; }
@@ -31,7 +31,7 @@
             };
 
             //------------------------------------------------------ - - - - - - - - - -------//
-            // init DOM (Document Object Model)
+            // creat DOM for rotator (Document Object Model)
             for (var i = 1; i <= global.nSliceNo; i++) {
                 $('<div/>', {
                     id: 'image' + i,
@@ -64,7 +64,7 @@
             global.aktiv = window.setInterval(function () { rotate(0.05); }, 1);
 
             //------------------------------------------------------ - - - - - - - - - -------//
-            // break and set new with mouse interaction
+            // break, set new translation and direction with mouse interaction
             $('.image').mousemove(function (e) {
                 var nRelMousePos = e.pageX - 400 - 250;
                 window.clearInterval(global.aktiv)
