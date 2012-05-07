@@ -5,7 +5,7 @@
     <meta name="date" content="2012-05-06T15:51:00+01:00" />
     <meta name="ROBOTS" content="ALL" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>COSMO-SLIDER - demo-page</title>
+    <title>COSMO2 - demo-page</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <style type="text/css">
         html, body { background-image: url(bg.png); }
@@ -22,11 +22,20 @@
         $(function () {
 
             //------------------------------------------------------ - - - - - - - - - -------//
+            // settings
+            var settings = {
+                strImagePath: 'images',            
+                nRadiusWidth: 300,
+                nRadiusHeight: 60,
+                bAheadIsDown: true,
+                nRotateSpeed: 110
+            };
+
+            //------------------------------------------------------ - - - - - - - - - -------//
             // global variables
             var global = {
-                aktiv: null,
+                varAktiv: null,
                 nAlpha: 0,
-                nAlphaWithOffset: 0,
                 nSliceNo: 12
             };
 
@@ -42,47 +51,48 @@
                 $('<img/>', {
                     id: 'image' + i,
                     class: 'bg',
-                    src: 'images/Entwurf-innen_bg.png',
+                    src: settings.strImagePath + '/Entwurf-innen_bg.png',
                     style: 'top: 0; left: 0; opacity: 0;'
                 }).appendTo('#image' + i);
 
                 $('<img/>', {
                     class: 'all',
-                    src: 'images/Entwurf-innen-' + i + '_all.png',
+                    src: settings.strImagePath + '/Entwurf-innen-' + i + '_all.png',
                     style: 'left: 0px;top: 0px; opacity: 0;',
                     alt: 'sample image'
                 }).appendTo('#image' + i);
 
                 $('<img/>', {
-                    src: 'images/Entwurf-innen-' + i + '.png',
+                    src: settings.strImagePath + '/Entwurf-innen-' + i + '.png',
                     style: 'top: 0; left: 0;'
                 }).appendTo('#image' + i);
             }
 
             //------------------------------------------------------ - - - - - - - - - -------//
             // rotate translation
-            global.aktiv = window.setInterval(function () { rotate(0.05); }, 1);
+            global.varAktiv = window.setInterval(function () { rotate(0.05); }, 1);
 
             //------------------------------------------------------ - - - - - - - - - -------//
             // break, set new translation and direction with mouse interaction
             $('.image').mousemove(function (e) {
                 var nRelMousePos = e.pageX - 400 - 250;
-                window.clearInterval(global.aktiv)
-                global.aktiv = window.setInterval(function () { rotate(nRelMousePos / 1000); }, 1);
+                window.clearInterval(global.varAktiv)
+                global.varAktiv = window.setInterval(function () { rotate(nRelMousePos / 1000); }, 1);
             });
 
             //------------------------------------------------------ - - - - - - - - - -------//
             // set for each image-slide css properties, like: left, top, z-index, opacity, ...
             //------------------------------------------------------ - - - - - - - - - -------//
             function rotate(delta) {
-                global.nAlpha += (delta / 20);
+                var nAlphaWithOffset;
+                global.nAlpha += (delta * settings.nRotateSpeed / 1100);
                 for (var i = 1; i <= global.nSliceNo; i++) {
-                    global.nAlphaWithOffset = global.nAlpha + (0.5 * i);
-                    $('#image' + i).css('left', Math.cos(global.nAlphaWithOffset) * 300 + 'px');
-                    $('#image' + i).css('top', Math.sin(global.nAlphaWithOffset) > 0 ? Math.abs(Math.sin(global.nAlphaWithOffset) * 60) + 'px' : '-' + Math.abs(Math.sin(global.nAlphaWithOffset) * 60) + 'px');
-                    $('#image' + i).css('z-index', Math.floor((Math.sin(global.nAlphaWithOffset) * 100) + 100));
-                    $('#image' + i + ' img.bg, #image' + i + ' img.all').css('opacity', Math.sin(global.nAlphaWithOffset) < 0.1 ? 0 : Math.sin(global.nAlphaWithOffset));
-                    $('#image' + i + ' img.bg').css('border-style', Math.sin(global.nAlphaWithOffset) < 0.5 ? 'none' : 'solid');
+                    nAlphaWithOffset = global.nAlpha + (0.5 * i);
+                    $('#image' + i).css('left', Math.cos(nAlphaWithOffset) * settings.nRadiusWidth + 'px');
+                    $('#image' + i).css('top', Math.sin(nAlphaWithOffset) * parseInt((settings.bAheadIsDown == true ? '+' : '-') + settings.nRadiusHeight) + 'px');
+                    $('#image' + i).css('z-index', Math.floor((Math.sin(nAlphaWithOffset) * 100) + 100));
+                    $('#image' + i + ' img.bg, #image' + i + ' img.all').css('opacity', Math.sin(nAlphaWithOffset) < 0.1 ? 0 : Math.sin(nAlphaWithOffset));
+                    $('#image' + i + ' img.bg').css('border-style', Math.sin(nAlphaWithOffset) < 0.5 ? 'none' : 'solid');
                 }
             };
         });
