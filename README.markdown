@@ -1,14 +1,11 @@
 # Image Rotator
 
-Image rotator
+tags: javascript image-rotator carousel jQuery
 
 demo page: [http://www.kometschuh.de/cosmo_slider/cosmo2/index.htm] (http://www.kometschuh.de/cosmo_slider/cosmo2/index.htm)
 
-
-
-
 ## License
 
-This plugin is licensed under the MIT License
+This plugin is licensed under the MIT or GPL License
 
 Copyright for cosmo-slider-full (c) 2012 [Daniel Floeter](http://kometschuh.de)
