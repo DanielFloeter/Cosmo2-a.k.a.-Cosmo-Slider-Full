@@ -39,7 +39,7 @@
         };
 
         //------------------------------------------------------ - - - - - - - - - -------//
-        // creat DOM for rotator (Document Object Model)
+        // creat DOM (Document Object Model) for rotator 
         for (var i = 0; i < global.nImagesCount; i++) {
             $('<div/>', {
                 id: 'image' + i,
@@ -86,7 +86,7 @@
             var nAlphaWithOffset;
             global.nAlpha += (delta * settings.nRotateSpeed / 1100);
             for (var i = 0; i < global.nImagesCount; i++) {
-                nAlphaWithOffset = global.nAlpha + (6 / global.nImagesCount * i);
+                nAlphaWithOffset = global.nAlpha + (Math.PI * 2 / global.nImagesCount * i);
                 $('#image' + i).css('left', Math.cos(nAlphaWithOffset) * settings.nRadiusWidth + 'px');
                 $('#image' + i).css('top', Math.sin(nAlphaWithOffset) * parseInt((settings.bAheadIsDown == true ? '+' : '-') + settings.nRadiusHeight) + 'px');
                 $('#image' + i).css('z-index', Math.floor((Math.sin(nAlphaWithOffset) * 100) + 100));
