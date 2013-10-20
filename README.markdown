@@ -2,8 +2,6 @@
 
 tags: image-rotator carousel jQuery javascript
 
-![Cosmo2 demo page](http://www.kometschuh.de/cosmo_slider/cosmo2/images/sample_.jpg)
-
 demo page: [http://www.kometschuh.de/cosmo_slider/cosmo2/index.htm] (http://www.kometschuh.de/cosmo_slider/cosmo2/index.htm)
 
 ## License
